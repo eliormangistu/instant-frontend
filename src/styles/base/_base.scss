@@ -3,7 +3,12 @@
 }
 
 body {
+    margin: 0;
     direction: ltr;
     background-color: $inst-primary-background;
     color: $inst-primary-text;
+}
+
+img {
+    max-width: 100%;
 }
