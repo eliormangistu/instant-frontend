@@ -1,3 +1,36 @@
+.login-container {
+    background-color: $inst-primary-background;
+}
+
+.login-form {
+    border: 1px solid $inst-separater;
+    border-radius: 1px;
+    padding: 1em;
+    height: 530px;
+    width: 350px;
+    padding: 1.5em;
+}
+
 .sign-up-input {
-    background-color: aqua;
+    background-color: $inst-secondary-background;
+    color: $inst-primary-text;
+    border: 1px solid $inst-separater;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.log-in-btn {
+    background-color: $inst-blue;
+    color: $inst-primary-background;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1em;
+    width: 100%;
+    height: 30px;
+}
+
+input {
+    margin-top: 0.5em;
+    border-radius: 5px;
 }

@@ -4,7 +4,7 @@ import { userService } from '../services/user.service.js'
 
 export function LoginSignup(props) {
 
-    const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+    const [credentials, setCredentials] = useState({ username: '', password: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
 
@@ -18,7 +18,7 @@ export function LoginSignup(props) {
     }
 
     function clearState() {
-        setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+        setCredentials({ username: '', password: '' })
         setIsSignup(false)
     }
 
@@ -47,18 +47,20 @@ export function LoginSignup(props) {
     }
 
     return (
-        <div className="login-container flex items-center">
+        <div className="login-container flex items-center justify-center">
             <img
-                src="src\assets\images\iphone-with-profile.jpg" alt="Instagram"
+                src="src\assets\images\phone-image.png" alt="Instagram"
             />
             <section className='login-form'>
-                <img
-                    src='src\assets\images\logo.png' alt='logo'>
-                </img>
+                <h1 className='flex justify-center'>
+                    <img
+                        src='src\assets\images\logo.png' alt='logo'>
+                    </img>
+                </h1>
                 {/* <p>
                     <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
                 </p> */}
-                {!isSignup && <form className="login-form" onSubmit={onLogin}>
+                {/* {!isSignup && <form className="login-form" onSubmit={onLogin}>
                     <select
                         name="username"
                         value={credentials.username}
@@ -69,17 +71,10 @@ export function LoginSignup(props) {
                     </select>
 
                     <button>Login!</button>
-                </form>}
-                <div className="signup-section">
-                    {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                        {/* <input
-                            type="text"
-                            name="fullname"
-                            value={credentials.fullname}
-                            placeholder="Fullname"
-                            onChange={handleChange}
-                            required
-                        /> */}
+                </form>} */}
+                {/* <div className="signup-section"> */}
+                <form className="signup-form" onSubmit={onSignup}>
+                    <div>
                         <input className='sign-up-input'
                             type="text"
                             name="username"
@@ -88,6 +83,8 @@ export function LoginSignup(props) {
                             onChange={handleChange}
                             required
                         />
+                    </div>
+                    <div>
                         <input className='sign-up-input'
                             type="password"
                             name="password"
@@ -96,10 +93,15 @@ export function LoginSignup(props) {
                             onChange={handleChange}
                             required
                         />
-                        <button >Log in</button>
-                    </form>}
-                </div>
+                    </div>
+                    <button className='log-in-btn' >Log in</button>
+                </form>
+                {/* <div>
+                    <p>Don't have an account? <button>Sign up</button></p>
+                </div> */}
             </section >
+            {/* </div> */}
         </div>
+
     )
 }

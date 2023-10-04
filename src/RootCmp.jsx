@@ -7,7 +7,7 @@ import { LoginSignup } from './cmps/LoginSignup.jsx'
 export function RootCmp() {
 
   return (
-    <section>login
+    <section>
       <LoginSignup />
     </section>
   )
