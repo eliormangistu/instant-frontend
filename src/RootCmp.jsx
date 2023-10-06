@@ -11,20 +11,20 @@ import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { AppFooter } from './cmps/AppFooter.jsx'
+
 export function RootCmp() {
 
   return (
     <Provider store={store} >
       <Router>
-        <section className='main-layout'>
-          <main>
-            <Routes>
-              <Route element={<HomePage />} path='/' />
-              <Route element={<StoryIndex />} path='/story' />
-              <Route element={<StoryDetails />} path='/story/:storyId' />
-            </Routes>
-          </main>
-        </section>
+        <main>
+          <Routes>
+            <Route element={<LoginSignup />} path='/' />
+            <Route element={<HomePage />} path='/home' />
+            {/* <Route element={<StoryIndex />} path='/story' /> */}
+            <Route element={<StoryDetails />} path='/story/:storyId' />
+          </Routes>
+        </main>
       </Router>
     </Provider >
   )

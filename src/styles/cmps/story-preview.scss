@@ -1,0 +1,13 @@
+.story-preview {
+    max-width: 100%;
+    width: 100vh;
+    width: 470px;
+    padding-top: 22px;
+}
+
+.story-preview-svg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

@@ -64,11 +64,11 @@ function _createStorys() {
             {
                 _id: "s101",
                 txt: "Best trip ever",
-                imgUrl: "src\assets\images\tree.jpg",
+                imgUrl: "src/assets/images/tree.jpg",
                 by: {
                     _id: "u101",
                     fullname: "Ulash Ulashi",
-                    imgUrl: "http://some-img"
+                    imgUrl: "src/assets/images/user1.jpg"
                 },
                 loc: { // Optional
                     lat: 11.11,
@@ -119,11 +119,11 @@ function _createStorys() {
             {
                 _id: "s102",
                 txt: "Best meal ever",
-                imgUrl: "http://some-img",
+                imgUrl: "src/assets/images/berries.jpg",
                 by: {
                     _id: "u101",
-                    fullname: "Ulash Ulashi",
-                    imgUrl: "http://some-img"
+                    fullname: "Elior Mangistu",
+                    imgUrl: "src/assets/images/user2.jpg"
                 },
                 loc: { // Optional
                     lat: 11.11,

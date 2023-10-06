@@ -13,10 +13,9 @@ import { NavLink } from 'react-router-dom'
 export function HomePage() {
     return (
         <section className='home-layout'>
-            {/* <div className='nav-bar'>
-                <NavBar />
-            </div> */}
-            <LoginSignup />
+            <NavBar />
+            <StoryIndex />
+            <AppFooter />
         </section>
     )
 }

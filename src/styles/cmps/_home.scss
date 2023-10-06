@@ -1,0 +1,8 @@
+.home-layout {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr 4fr 2fr;
+
+    grid-template-areas:
+        "nav-bar story-list app-footer";
+}
