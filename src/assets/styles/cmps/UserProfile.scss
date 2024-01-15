@@ -1,0 +1,241 @@
+.profile-sec {
+    padding: 30px 20px 0;
+    width: 935px;
+    background-color: $inst-primary-background;
+    margin: 0 auto 30px;
+    box-sizing: border-box;
+    font-family: $font-family-system;
+
+    //display: block;
+    //position: relative;
+    //z-index: 100;
+    //background-color: transparent;
+    header {
+        //z-index: -1;
+        margin-bottom: 44px;
+        align-items: stretch;
+        //display: block;
+        //z-index: -1;
+        // margin: auto;
+        // width: 100vh;
+        //position: relative;
+
+        .user-profile-img {
+            margin-right: 30px;
+            width: 166px;
+            height: 166px;
+            // z-index: -10;
+            // z-index: 100;
+            //position: absolute;
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                width: 150px;
+                height: 150px;
+                // position: relative;
+                // display: block;
+                // left: -8px;
+                // top:-8px;
+                // z-index: -10;
+                position: absolute;
+                z-index: 1;
+            }
+        }
+
+        .user-details-sec {
+            color: $inst-primary-text;
+            font-family: $font-family-system;
+
+            //z-index: inherit;
+            .first-sec {
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                line-height: 25px;
+                font-weight: 400;
+                font-size: 20px;
+                margin: 0;
+            }
+
+            .edit-view-btn {
+                margin-left: 20px;
+                align-self: auto;
+                // width: 223px;
+
+                .edit-btn {
+                    height: 32px;
+                    border-radius: 8px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    background-color: $inst-highlight-background;
+                }
+
+                .edit-btn-follow {
+                    height: 32px;
+                    border-radius: 8px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    background-color: $inst-primary-button;
+                    color: $inst-primary-background;
+                }
+
+
+                .view-btn {
+                    height: 32px;
+                    border-radius: 8px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    background-color: $inst-highlight-background;
+                    margin-left: 8px;
+
+                }
+
+                span {
+                    text-align: center;
+                    font-size: .875rem;
+                    line-height: 18px;
+                    font-weight: 600;
+                    margin: auto;
+                }
+
+                .user-profile-arrow {
+                    margin-left: 5px;
+                    margin-top: 2px;
+                }
+            }
+
+            .opt-svg {
+                // width: 40px;
+                // height: 40px;
+                margin-left: 5px;
+                padding: 8px;
+            }
+
+            .post-follow-sec {
+                margin-bottom: 20px;
+                font-family: $font-family-system;
+                color: $inst-primary-text;
+
+                span {
+                    font-size: 16px;
+                    //margin-right: 40px;
+                }
+
+                div {
+                    margin-right: 40px;
+                }
+
+                .num {
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+
+    .user-fullname-sec {
+
+        span {
+            line-height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+
+    .new-sec {
+        //width: 115px;
+
+
+        height: 130px;
+        margin-bottom: 44px;
+
+        .plus-sec {
+            padding-bottom: 10px;
+            padding-top: 10px;
+
+            // padding-left: 15px;
+            // padding-right: 15px;
+            .plus-svg {
+                height: 77px;
+                width: 77px;
+                border-radius: 50%;
+                border: 1px solid $inst-highlight-background;
+            }
+
+
+        }
+
+    }
+
+    .new-span {
+        padding-top: 15px;
+
+        span {
+            text-align: center;
+            margin: auto;
+            //padding-top: 15px;
+            line-height: 16px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+    }
+
+    .sep {
+        border: 1px solid $inst-separater;
+    }
+
+    .svg-profile-bar {
+
+        .posts {
+            margin-right: 60px;
+            border-top: 1px solid $inst-primary-text;
+            height: 52px;
+        }
+
+        .saved {
+            margin-right: 60px;
+            color: $inst-secondary-text;
+        }
+
+        .tagged {
+            margin-right: 60px;
+            color: $inst-secondary-text;
+        }
+
+        span {
+            margin-left: 6px;
+            font-weight: 600;
+            line-height: 18px;
+            font-size: .75rem;
+            letter-spacing: 1px;
+        }
+    }
+
+    .user-posts-sec {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(309px, 1fr));
+        grid-auto-flow: dense;
+        gap: 4px;
+        margin: 0 auto;
+        width: 935px;
+        //position: relative;
+        // z-index: -1;
+
+        img {
+            display: block;
+            height: 309px;
+            width: 309px;
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            //z-index: inherit;
+            //position: absolute;
+        }
+    }
+}

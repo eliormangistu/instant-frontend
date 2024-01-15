@@ -1,0 +1,105 @@
+.nav-bar {
+    box-sizing: border-box;
+    background-color: $inst-primary-background;
+    border-right: 1px solid $inst-separater;
+    height: 100dvh;
+    padding-bottom: 20px;
+    padding-right: $padding-12;
+    padding-left: $padding-12;
+    padding-top: $padding-8;
+    width: $nav-bar-width;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    :nth-child(9) {
+        bottom: 0;
+        position: absolute;
+        left: 12px;
+    }
+
+}
+
+.nav-logo {
+    width: 100%;
+    height: 73px;
+    padding-top: 25px;
+    margin-bottom: 19px;
+    padding-bottom: 16px;
+    top: 0;
+    padding-right: $padding-12;
+    padding-left: $padding-12;
+    left: 0;
+}
+
+.nav-bar-logo {
+    height: 29px;
+    width: 103px;
+}
+
+.nav-bar-svg {
+    padding-right: $padding-12;
+    padding-left: $padding-12;
+    padding-top: $padding-12;
+    padding-bottom: $padding-12;
+    margin-bottom: $padding-12;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    align-items: center;
+    width: 100%;
+    border-top-right-radius: $border-radius-8;
+    border-bottom-left-radius: $border-radius-8;
+    border-bottom-right-radius: $border-radius-8;
+    border-top-left-radius: $border-radius-8;
+    cursor: pointer;
+    //background-color: aliceblue;
+    // :hover {
+    //     background-color: $inst-secondary-text;
+    // }
+
+    // border-right: 1px solid gray;
+
+
+
+}
+
+.nav-bar-svg:hover {
+    background-color: $inst-hover;
+}
+
+.nav-bar-span {
+    padding-left: $padding-16;
+    line-height: $base-line-height;
+    font-size: $font-size-16;
+    font-family: $font-family-system;
+    font-weight: 400;
+
+}
+
+.nav-profile-img {
+    height: 24px;
+    width: 24px;
+}
+
+.notif-dot-sec {
+    top: -1px;
+    right: -2px;
+    position: absolute;
+    display: block;
+
+    .notif-dot {
+        background-color: $inst-primary-background;
+        height: 8px;
+        width: 8px;
+        border-radius: 1.5px solid $inst-primary-background;
+        border-radius: 50%;
+        background-color: rgb(255, 48, 64);
+        display: block;
+        position: relative;
+    }
+}
+
+.notif {
+    fill: rgb(255, 48, 64);
+}

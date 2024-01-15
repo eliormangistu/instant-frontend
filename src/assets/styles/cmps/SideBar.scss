@@ -1,0 +1,110 @@
+.side-bar {
+    width: $side-bar-width;
+    height: 100vh;
+    padding-left: 64px;
+    margin-top: 36px;
+    background-color: $inst-secondary-background;
+    font-family: $font-family-system;
+    //padding-right: 20px;
+    background-color: transparent;
+    display: block;
+
+    .suggest-sec {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 319px;
+
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 4px;
+        padding-top: 4px;
+
+        :nth-child(1) {
+            line-height: 18px;
+            font-size: 14px;
+            font-weight: 600;
+            color: $inst-secondary-text;
+        }
+
+        :nth-child(2) {
+            line-height: 16px;
+            color: $inst-primary-text;
+            font-weight: 600;
+            font-size: 12px;
+        }
+    }
+
+    .user-pad {
+        padding-bottom: 8px;
+        padding-top: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+
+        .users-sec {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+
+
+            width: 283px;
+            height: 44px;
+
+            .user-name {
+                font-family: $font-family-system;
+
+                :nth-child(1) {
+                    color: $inst-primary-text;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 18px;
+                    ;
+                }
+
+                :nth-child(2) {
+                    line-height: 16px;
+                    font-weight: 400;
+                    color: $inst-secondary-text;
+                    font-size: 12px;
+                }
+
+                .logged-user {
+                    line-height: 18px;
+                    font-weight: 400;
+                    color: $inst-secondary-text;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .switch,
+        .follow {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            font-family: $font-family-system;
+            color: $inst-primary-button;
+        }
+
+        .following {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            font-family: $font-family-system;
+            color: $inst-secondary-text;
+        }
+    }
+
+    .user-img {
+        padding-right: 12px;
+        width: 56px;
+
+        img {
+            width: 44px;
+            height: 44px;
+            // padding-right: 12px;
+            width: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+}

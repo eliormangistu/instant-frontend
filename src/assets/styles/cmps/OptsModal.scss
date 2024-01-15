@@ -1,0 +1,76 @@
+.opts-sec-loggedinguser {
+    height: 336px;
+    width: 400px;
+    background-color: $inst-primary-background;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: block;
+    margin-top: 0;
+
+    span:nth-child(1) {
+        border-top: none;
+        color: rgb(237, 73, 86);
+        font-weight: 700;
+
+    }
+
+    span {
+        height: 48px;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-family: $font-family-system;
+        color: $inst-primary-text;
+        background-color: transparent;
+        border-top: 1px solid $inst-separater;
+        margin: 0;
+        padding: 4px 8px;
+        cursor: pointer;
+    }
+
+}
+
+.opts-sec {
+    height: 432px;
+    width: 400px;
+    background-color: $inst-primary-background;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    display: block;
+    margin-top: 0;
+
+    span:nth-child(1) {
+        border-top: none;
+        color: rgb(237, 73, 86);
+        font-weight: 700;
+
+    }
+
+    span:nth-child(2) {
+        color: rgb(237, 73, 86);
+        font-weight: 700;
+
+    }
+
+    span {
+        height: 48px;
+        width: 100%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-family: $font-family-system;
+        color: $inst-primary-text;
+        background-color: transparent;
+        border-top: 1px solid $inst-separater;
+        margin: 0;
+        padding: 4px 8px;
+        cursor: pointer;
+    }
+}

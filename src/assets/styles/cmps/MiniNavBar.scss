@@ -1,0 +1,63 @@
+.mini-nav-bar {
+    width: 72px;
+    padding-bottom: 20px;
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-left: 12px;
+    height: 100dvh;
+    background-color: $inst-primary-background;
+    position: sticky;
+    position: -webkit-sticky;
+    position: absolute;
+    display: block;
+    display: grid;
+    grid-template-rows: 1fr 2fr 5fr;
+
+    border-right: 1px solid $inst-separater;
+
+
+    .mini-nav-svg-icon {
+
+        width: 48px;
+        height: 48px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        padding-right: 12px;
+        padding-left: 12px;
+        border-radius: 8px;
+
+
+    }
+
+    .mini-nav-svg-icon:hover {
+        background-color: $inst-hover;
+    }
+
+    .mini-nav-svg {
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        border-radius: 8px;
+    }
+
+    .more {
+        position: absolute;
+    }
+
+    .mini-nav-svg:hover {
+        background-color: $inst-hover;
+    }
+
+    .mini-nav-profile-img {
+        img {
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+}

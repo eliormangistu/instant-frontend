@@ -1,31 +1,23 @@
 import React from 'react'
-//import { Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router'
+import routes from './routes'
 
-import { Route, HashRouter as Router, Routes } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { store } from './store/store.js'
-
-import { StoryIndex } from './pages/StoryIndex.jsx'
-import { StoryDetails } from './pages/StoryDetails.jsx'
-import { LoginSignup } from './cmps/LoginSignup.jsx'
-import { HomePage } from './pages/HomePage.jsx'
-import { AppHeader } from './cmps/AppHeader.jsx'
-import { AppFooter } from './cmps/AppFooter.jsx'
-
+import { LoginPage } from './pages/LoginPage'
+import { UserProfile } from './pages/UserProfile'
+import { DirectMessage } from './pages/DirectMessage'
+import { Messages } from './pages/Messages'
 export function RootCmp() {
 
   return (
-    <Provider store={store} >
-      <Router>
-        <main>
-          <Routes>
-            <Route element={<LoginSignup />} path='/' />
-            <Route element={<HomePage />} path='/home' />
-            {/* <Route element={<StoryIndex />} path='/story' /> */}
-            <Route element={<StoryDetails />} path='/story/:storyId' />
-          </Routes>
-        </main>
-      </Router>
-    </Provider >
+    <div>
+      <main>
+        <Routes>
+          {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/user/:id" element={<UserProfile />} />
+          <Route path="/direct/t/:id/" element={<Messages />} />
+        </Routes>
+      </main>
+    </div>
   )
 }

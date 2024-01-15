@@ -1,0 +1,170 @@
+.edit-modal {
+    width: 1084px;
+    height: 787px;
+    background-color: $inst-primary-background;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    font-family: $font-family-system;
+    display: block;
+
+    .edit-title {
+        height: 42px;
+        border-bottom: 1px solid $inst-separater;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            border: none;
+            background-color: transparent;
+        }
+
+        .done {
+            padding: 16px;
+            font-size: .875rem;
+            line-height: 18px;
+            color: $inst-primary-button;
+            font-weight: 600;
+        }
+
+        .cancle {
+            padding: 16px;
+            background-color: transparent;
+            color: $inst-primary-text;
+            line-height: 18px;
+            font-size: 14px;
+            font-weight: 400;
+
+        }
+
+        .edit-info {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            border: none;
+        }
+    }
+
+    .img-sec {
+        width: 744px;
+        height: 744px;
+        background-color: $inst-secondary-background;
+
+        .edit-img {
+            //height={744} width={644}
+            height: 744px;
+            width: 644px;
+
+
+            img {
+                height: 744px;
+                width: 644px;
+            }
+        }
+    }
+
+    .edit-sec {
+        width: 340px;
+        border-left: 1px solid $inst-separater;
+
+        .user-edit {
+            margin-right: 16px;
+            margin-left: 16px;
+            margin-bottom: 14px;
+            margin-top: 18px;
+            width: 100%;
+
+            span {
+                border: none;
+
+            }
+
+            .user-img {
+                width: 40px;
+
+                img {
+                    border-radius: 50%;
+                    width: 28px;
+                    height: 28px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+    }
+
+    .user-cap {
+        height: 212px;
+
+        textarea {
+            // height: 18px !important;
+            min-height: 168px;
+            max-height: 168px;
+            border-style: none;
+            outline: none;
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+            //--webkit-appearance: none;
+            font-family: $font-family-system;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            background-color: transparent;
+            resize: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        ::placeholder {
+            color: $inst-secondary-text;
+            font-family: $font-family-system
+        }
+
+        .smiley-txt-sec {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 44px;
+
+            .smiley {
+                width: 36px;
+                height: 36px;
+            }
+
+            .cap-txt {
+                padding-right: 12px;
+                padding-left: 12px;
+
+                span {
+                    line-height: 16px;
+                    font-weight: 400;
+                    color: $inst-secondary-text;
+                    font-size: 12px;
+                }
+            }
+
+        }
+
+        .border {
+            border-top: 1px solid $inst-separater;
+        }
+    }
+
+
+    .story-edit-emoji-picker {
+        position: relative;
+
+        .story-edit-emoji-picker {
+            position: absolute;
+        }
+
+    }
+
+}

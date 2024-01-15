@@ -2,52 +2,57 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 
 import { storageService } from './async-storage.service.js'
+import { userService } from './user.service.js'
 
 const BASE_URL = 'story/'
-const STORAGE_KEY = 'storyDB'
+const STORAGE_KEY = 'story'
 
-_createStorys()
+//_createStorys()
 
 export const storyService = {
     query,
     getById,
     save,
     remove,
-    getEmptyStory
+    getEmptyStory,
+    createComment,
+    createLike,
+    createStory,
+    getNotif,
+    // removeLike,
 }
 
 //console.log(_createStorys());
-//window.cs = storyService
+window.cs = storyService
 
-//async 
-function query() {
-    //filterBy = { txt: '' }
-    //return httpService.get(STORAGE_KEY, filterBy)
-    return storageService.query(STORAGE_KEY)
+
+async function query() {
+    return httpService.get(STORAGE_KEY)
+    //return storageService.query(STORAGE_KEY)
 }
 
-//console.log(getById('s101'));
 function getById(storyId) {
-    //return httpService.get(`story/${storyId}`)
-    return storageService.get(STORAGE_KEY, storyId)
+    return httpService.get(`story/${storyId}`)
+    //return storageService.get(STORAGE_KEY, storyId)
 }
-//async 
-function remove(storyId) {
-    // return httpService.delete(`story/${storyId}`)
-    return storageService.remove(STORAGE_KEY, storyId)
-}
-//async 
-function save(story) {
-    //var savedStory
-    if (story._id) {
-        // savedCar = await httpService.put(`story/${story._id}`, story)
-        return storageService.put(STORAGE_KEY, story)
 
+async function remove(storyId) {
+    return httpService.delete(`story/${storyId}`)
+    //return storageService.remove(STORAGE_KEY, storyId)
+}
+
+async function getNotif(notif) {
+    await httpService.post(`story/notification`, notif)
+}
+
+async function save(story) {
+    let savedStory
+    if (story._id) {
+        savedStory = await httpService.put(`story/${story._id}`, story)
     } else {
-        //savedCar = await httpService.post('story', story)
-        return storageService.post(STORAGE_KEY, story)
+        savedStory = await httpService.post('story', story)
     }
-    // return savedStory
+    return savedStory
 }
 
 function getEmptyStory() {
@@ -56,123 +61,62 @@ function getEmptyStory() {
     }
 }
 
-
-function _createStorys() {
-    let storys = storageService.loadFromStorage(STORAGE_KEY)
-    if (!storys || !storys.length) {
-        storys = [
-            {
-                _id: "s101",
-                txt: "Best trip ever",
-                imgUrl: "src/assets/images/tree.jpg",
-                by: {
-                    _id: "u101",
-                    fullname: "Ulash Ulashi",
-                    imgUrl: "src/assets/images/user1.jpg"
-                },
-                loc: { // Optional
-                    lat: 11.11,
-                    lng: 22.22,
-                    name: "Tel Aviv"
-                },
-                comments: [
-                    {
-                        id: "c1001",
-                        by: {
-                            _id: "u105",
-                            fullname: "Bob",
-                            imgUrl: "http://some-img"
-                        },
-                        txt: "good one!",
-                        likedBy: [ // Optional
-                            {
-                                "_id": "u105",
-                                "fullname": "Bob",
-                                "imgUrl": "http://some-img"
-                            }
-                        ]
-                    },
-                    {
-                        id: "c1002",
-                        by: {
-                            _id: "u106",
-                            fullname: "Dob",
-                            imgUrl: "http://some-img"
-                        },
-                        txt: "not good!",
-                    }
-                ],
-                likedBy: [
-                    {
-                        _id: "u105",
-                        fullname: "Bob",
-                        imgUrl: "http://some-img"
-                    },
-                    {
-                        _id: "u106",
-                        fullname: "Dob",
-                        imgUrl: "http://some-img"
-                    }
-                ],
-                tags: ["fun", "romantic"]
-            },
-            {
-                _id: "s102",
-                txt: "Best meal ever",
-                imgUrl: "src/assets/images/berries.jpg",
-                by: {
-                    _id: "u101",
-                    fullname: "Elior Mangistu",
-                    imgUrl: "src/assets/images/user2.jpg"
-                },
-                loc: { // Optional
-                    lat: 11.11,
-                    lng: 22.22,
-                    name: "Tel Aviv"
-                },
-                comments: [
-                    {
-                        id: "c1001",
-                        by: {
-                            _id: "u105",
-                            fullname: "Bob",
-                            imgUrl: "http://some-img"
-                        },
-                        txt: "good one!",
-                        likedBy: [ // Optional
-                            {
-                                "_id": "u105",
-                                "fullname": "Bob",
-                                "imgUrl": "http://some-img"
-                            }
-                        ]
-                    },
-                    {
-                        id: "c1002",
-                        by: {
-                            _id: "u106",
-                            fullname: "Dob",
-                            imgUrl: "http://some-img"
-                        },
-                        txt: "not good!",
-                    }
-                ],
-                likedBy: [
-                    {
-                        _id: "u105",
-                        fullname: "Bob",
-                        imgUrl: "http://some-img"
-                    },
-                    {
-                        _id: "u106",
-                        fullname: "Dob",
-                        imgUrl: "http://some-img"
-                    }
-                ],
-                tags: ["fun", "romantic"]
-            }
-        ]
-        storageService.saveToStorage(STORAGE_KEY, storys)
-        console.log(storys);
+function createComment(txt, user) {
+    return {
+        id: utilService.makeId(4),
+        by: {
+            _id: user._id,
+            fullname: user.username,
+            imgUrl: user.imgUrl,
+        },
+        txt,
+        createdAt: Date.now(),
+        likedBy: [],
     }
 }
+
+function createLike(user, story) {
+    story.likedBy.push(
+        {
+            _id: user._id,
+            fullname: user.username,
+            imgUrl: user.imgUrl,
+        }
+    )
+}
+
+
+function createCommentLike(user, story) {
+    story.comment.likedBy.push(
+        {
+            _id: utilService.makeId(4),
+            fullname: user.username,
+            imgUrl: user.imgUrl,
+        },
+    )
+}
+
+
+function createStory(caption, imgUrl, user) {
+    return {
+        txt: caption.txt,
+        imgUrl,
+        by: {
+            _id: user._id,
+            fullname: user.username,
+            imgUrl: user.imgUrl
+        },
+        loc: { lat: 11.11, lng: 22.22 },
+        comments: [],
+        likedBy: [],
+        tags: [],
+        createdAt: Date.now(),
+    }
+}
+
+
+// function removeLike(story) {
+//     story.likedBy.splice(story.likedBy.length - 1, 1)
+//     console.log('story', story)
+// }
+

@@ -1,0 +1,26 @@
+@import 'setup/typography';
+@import 'setup/variables';
+
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/layout';
+
+@import 'cmps/LoginPage';
+@import 'cmps/Home';
+@import 'cmps/StoryPreview.scss';
+@import 'cmps/NavBar.scss';
+@import 'cmps/CreateModal.scss';
+@import 'cmps/Footer.scss';
+@import 'cmps/ExplorePage.scss';
+@import 'cmps/SideBar.scss';
+@import 'cmps/UserProfile.scss';
+@import 'cmps/OptsModal.scss';
+@import 'cmps/EditStory.scss';
+@import 'cmps/Search.scss';
+@import 'cmps/More.scss';
+@import 'cmps/MiniNavBar.scss';
+@import 'cmps/StoryDetails.scss';
+@import 'cmps/Messages.scss';
+@import 'cmps/Notif.scss';
+@import 'cmps/Reels.scss';
+@import 'cmps/OptionsComment.scss';

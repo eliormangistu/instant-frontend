@@ -7,6 +7,7 @@ export function ImgUploader({ onUploaded = null }) {
         height: 500,
         width: 500,
     })
+
     const [isUploading, setIsUploading] = useState(false)
 
     async function uploadImg(ev) {
@@ -23,9 +24,9 @@ export function ImgUploader({ onUploaded = null }) {
     }
 
     return (
-        <div className="upload-preview">
-            {imgData.imgUrl && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
-            <label htmlFor="imgUpload">{getUploadLabel()}</label>
+        <div>
+            {imgData.imgUrl && <img src={imgData.imgUrl} />}
+            <label className="pointer" htmlFor="imgUpload">Select From Computer</label>
             <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
         </div>
     )

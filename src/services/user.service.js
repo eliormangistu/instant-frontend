@@ -1,122 +1,142 @@
 import { httpService } from "./http.service.js";
 import { storageService } from "./async-storage.service.js"
 
-const BASE_URL = 'auth/'
-const STORAGE_KEY = 'userDB'
+
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 
 export const userService = {
-    query,
-    // getUsers,
+    getUsers,
     getById,
-    // remove,
+    remove,
     login,
-    // signup,
+    signup,
     logout,
-    // saveLocalUser,
-    // updateLocalUserFields,
+    saveLocalUser,
+    updateLocalUserFields,
     getLoggedinUser,
+    save,
+    createSavedStory,
+    update,
+    createFollow,
+    createNotif,
 }
 
-_createUsers()
-// window.userService
-window.us = userService
 
-// function getUsers() {
-//     return httpService.get(`user`)
-// }
+window.userService = userService
 
-function query() {
-    return storageService.query(STORAGE_KEY)
-}
-//async 
-function getById(userId) {
-    return storageService.get(STORAGE_KEY, userId)
-    // const user = await httpService.get(`user/${userId}`)
-    // return user
+function getUsers() {
+    return httpService.get(`user`)
 }
 
-// function remove(userId) {
-//     return httpService.delete(`user/${userId}`)
-// }
-
-//async 
-function login({ username, password }) {
-    return httpService.post(BASE_URL + 'login', { username, password })
-        .then(user => {
-            if (user) return _setLoggedinUser(user)
-        })
-    // const user = await httpService.post('auth/login', userCred)
-    // if (user) {
-    //     return saveLocalUser(user)
-    // }
+async function getById(userId) {
+    const user = await httpService.get(`user/${userId}`)
+    return user
 }
 
-// async function signup(userCred) {
-//     const user = await httpService.post('auth/signup', userCred)
-//     return saveLocalUser(user)
-// }
-
-//async 
-function logout() {
-    return httpService.post(BASE_URL + 'logout')
-        .then(() => {
-            sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-        })
-    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    // return httpService.post('auth/logout')
+function remove(userId) {
+    return httpService.delete(`user/${userId}`)
 }
 
-// function saveLocalUser(user) {
-//     user = { _id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score }
-//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-//     return user
-// }
+async function login(userCred) {
+    const user = await httpService.post('auth/login', userCred)
+    if (user) {
+        return saveLocalUser(user)
+    }
+}
 
-// function updateLocalUserFields(user) {
-//     const currUser = getLoggedinUser()
-//     const userToSave = { ...currUser, ...user }
-//     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
-//     return user
-// }
+async function signup(userCred) {
+    const user = await httpService.post('auth/signup', userCred)
+    return saveLocalUser(user)
+}
+
+async function logout() {
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    return httpService.post('auth/logout')
+}
+
+function saveLocalUser(user) {
+    user = { _id: user._id, fullname: user.fullname, username: user.username, imgUrl: user.imgUrl, following: user.following, followers: user.followers, savedStoryIds: user.savedStoryIds }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function updateLocalUserFields(user) {
+    const currUser = getLoggedinUser()
+    const userToSave = { ...currUser, ...user }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
+    return user
+}
 
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
-function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(userToSave))
-    return userToSave
+async function update(userUpdate) {
+
+    const user = await httpService.put(`user/${userUpdate._id}`, userUpdate)
+
+    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
+    return user
 }
 
-function _createUsers() {
-    let users = storageService.loadFromStorage(STORAGE_KEY)
-    if (!users || !users.length) {
-        users = [
-            {
-                _id: "u101",
-                username: "Muko",
-                password: "mukmuk",
-                fullname: "Muki Muka",
-                imgUrl: "http://some-img",
-                following: [
-                    {
-                        _id: "u106",
-                        fullname: "Dob",
-                        imgUrl: "http://some-img"
-                    }
-                ],
-                followers: [
-                    {
-                        _id: "u105",
-                        fullname: "Bob",
-                        imgUrl: "http://some-img"
-                    }
-                ],
-                savedStoryIds: ["s104", "s111", "s123"] // even better - use mini-story
-            }
-        ]
-        storageService.saveToStorage(STORAGE_KEY, users)
+async function save(user) {
+    let savedUser
+    if (user._id) {
+        savedUser = await httpService.put(`user/${user._id}`, user)
+    } else {
+        savedUser = await httpService.post('user', user)
+    }
+    return savedUser
+}
+
+function createSavedStory(user, story) {
+    return user.savedStoryIds.push(story._id)
+}
+
+function createFollow(user, loggedInUser) {
+    user.followers.push(
+        {
+            _id: loggedInUser._id,
+            fullname: loggedInUser.fullname,
+            username: loggedInUser.username,
+            imgUrl: loggedInUser.imgUrl,
+        },
+    )
+    loggedInUser.following.push(
+        {
+            _id: user._id,
+            fullname: user.fullname,
+            username: user.username,
+            imgUrl: user.imgUrl,
+        },
+    )
+}
+
+
+function createNotif(story, user, notif) {
+    console.log(story)
+    return {
+        storyId: story._id,
+        imgUrl: story.imgUrl,
+        storyBy: story.by,
+        notif,
+        notifBy: {
+            _id: user._id,
+            username: user.username,
+            imgUrl: user.imgUrl
+        },
+        story,
+        createdAt: Date.now(),
+    }
+}
+
+
+function createMsg(loggedInUser, user, msg) {
+    console.log(msg)
+    return {
+        loggedInUser,
+        user,
+        msg,
+        createdAt: Date.now(),
     }
 }

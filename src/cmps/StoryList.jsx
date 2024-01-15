@@ -1,16 +1,17 @@
 import { StoryPreview } from "./StoryPreview.jsx";
-import { AppHeader } from "./AppHeader.jsx";
-import { AppFooter } from "./AppFooter.jsx";
-import { NavBar } from "./NavBar.jsx";
 
-export function StoryList({ storys }) {
+export function StoryList({ storys, onRemoveStory, onUpdateStory }) {
     return (
         <section>
             <section className="story-list">
                 <ul className="clean-list">
                     {storys.map(story =>
                         <li key={story._id}>
-                            <StoryPreview story={story} />
+                            <StoryPreview
+                                story={story}
+                                onRemoveStory={onRemoveStory}
+                                onUpdateStory={onUpdateStory}
+                            />
                         </li>)}
                 </ul>
             </section>

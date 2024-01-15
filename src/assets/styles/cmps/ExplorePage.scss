@@ -1,0 +1,37 @@
+.explore-page {
+    background-color: $inst-primary-background;
+    z-index: -10;
+
+    .imgs-container {
+        padding-bottom: 30px;
+        width: 963px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(316px, 1fr));
+        grid-auto-flow: dense;
+        gap: 4px;
+        margin: 0 auto;
+
+        img {
+            display: block;
+            height: 316.98px;
+            width: 316.98px;
+            width: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+    }
+}
+
+.explore-footer {
+    background-color: transparent;
+    padding-left: 16px;
+    padding-right: 16px;
+    align-items: stretch;
+    margin-bottom: 52px;
+    align-self: auto;
+    margin-bottom: 24px;
+}

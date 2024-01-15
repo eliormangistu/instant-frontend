@@ -1,0 +1,26 @@
+// .home-top {
+//     width: 100vh;
+//     overflow-y: visible;
+//     border-bottom-left-radius: 0;
+//     background-color: transparent;
+//     box-sizing: border-box;
+//     border-bottom-right-radius: 0;
+//     margin-top: 8px;
+//     overflow-x: visible;
+//     border-top-left-radius: 0;
+//     border-top-right-radius: 0;
+//     position: absolute;
+// }
+
+.home-layout {
+    display: grid;
+    min-height: 100vh;
+    //grid-template-columns: repeat(3, minmax(319px, 1fr,22px));$side-bar-width $nav-bar-width
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    z-index: -1;
+    grid-template-areas:
+        "nav-bar story-list";
+}
+//nav-bar
+//side-bar

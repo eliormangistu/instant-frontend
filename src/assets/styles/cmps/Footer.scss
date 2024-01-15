@@ -1,0 +1,12 @@
+.footer {
+    margin-bottom: 12px;
+    margin-top: 12px;
+
+    span {
+        line-height: 16px;
+        font-weight: 400;
+        color: $inst-secondary-text;
+        font-family: $font-family-system;
+        font-size: 12px;
+    }
+}
